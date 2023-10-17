@@ -1,0 +1,4 @@
+#ifndef SNAKE_GAME_DRAWING_H
+#define SNAKE_GAME_DRAWING_H
+
+#endif

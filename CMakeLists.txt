@@ -3,4 +3,4 @@ project(snake_game C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(snake_game main.c econio.c)
+add_executable(snake_game main.c econio.c snake.c drawing.c file-control.c)
