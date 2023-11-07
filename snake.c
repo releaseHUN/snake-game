@@ -3,8 +3,8 @@
 
 snakeType *init(int x, int y){
 	snakeType *stSnake = malloc(sizeof(snakeType));
-	stSnake->x = x;
-	stSnake->y = y;
+	stSnake->iX = x;
+	stSnake->iY = y;
 	stSnake->next = NULL;
 	return stSnake;
 }
@@ -14,20 +14,20 @@ void addSegment(snakeType *stSnake) {
 	while(stSnake->next != NULL)
 		stSnake = stSnake->next;
 	stSnake->next = stTemp;
-	stSnake->next->x = stSnake->x - stSnake->directionX;
-	stSnake->next->y = stSnake->y - stSnake->directionY;
-	stSnake->next->directionX = stSnake->directionX;
-	stSnake->next->directionY = stSnake->directionY;
+	stSnake->next->iX = stSnake->iX - stSnake->iDirX;
+	stSnake->next->iY = stSnake->iY - stSnake->iDirY;
+	stSnake->next->iDirX = stSnake->iDirX;
+	stSnake->next->iDirY = stSnake->iDirY;
 }
 
-void moveSnake(snakeType *stSnake, int directionX, int directionY) {
-	stSnake->directionX = directionX;
-	stSnake->directionY = directionY;
+void moveSnake(snakeType *stSnake, int dirX, int dirY) {
+	stSnake->iDirX = dirX;
+	stSnake->iDirY = dirY;
 	while(stSnake->next != NULL){
-		stSnake->x += stSnake->directionX;
-		stSnake->y += stSnake->directionY;
-		stSnake->next->directionX = stSnake->directionX;
-		stSnake->next->directionY = stSnake->directionY;
+		stSnake->next->iDirX = stSnake->iDirX;
+		stSnake->next->iDirY = stSnake->iDirY;
+		stSnake->iX += stSnake->iDirX;
+		stSnake->iY += stSnake->iDirY;
 		stSnake = stSnake->next;
 	}
 }

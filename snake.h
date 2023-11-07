@@ -2,10 +2,10 @@
 #define SNAKE_GAME_SNAKE_H
 
 typedef struct snakeType {
-	int x;
-	int y;
-	int directionX;
-	int directionY;
+	int iX;
+	int iY;
+	int iDirX;
+	int iDirY;
 	struct snakeType *next;
 } snakeType;
 
@@ -16,6 +16,6 @@ snakeType *init(int x, int y);
 void addSegment(snakeType *stSnake);
 
 //moves the snake forward in the given direction
-void moveSnake(snakeType *stSnake, int directionX, int directionY);
+void moveSnake(snakeType *stSnake, int dirX, int dirY);
 
 #endif
