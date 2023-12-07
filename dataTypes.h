@@ -23,6 +23,7 @@ typedef struct {
 	int iScreensizeX;
 	int iScreensizeY;
 	int iFruitsRequired;
+	int iGameState;
 } gameInfoType;
 
 #endif

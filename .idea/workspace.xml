@@ -3,9 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -21,9 +21,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d6da51d-1e81-4a65-a6e8-1371a4aa2eaf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/snake.c" beforeDir="false" afterPath="$PROJECT_DIR$/snake.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/snake.h" beforeDir="false" afterPath="$PROJECT_DIR$/snake.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/dataTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drawing.c" beforeDir="false" afterPath="$PROJECT_DIR$/drawing.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drawing.h" beforeDir="false" afterPath="$PROJECT_DIR$/drawing.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameLogic.c" beforeDir="false" afterPath="$PROJECT_DIR$/gameLogic.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gameLogic.h" beforeDir="false" afterPath="$PROJECT_DIR$/gameLogic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +41,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -50,33 +58,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "CPPToolchains",
-    "structure.view.defaults.are.configured": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="snake_game" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="snake_game" TARGET_NAME="snake_game" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="snake_game" RUN_TARGET_NAME="snake_game">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -91,7 +94,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1697541834605</updated>
-      <workItem from="1697541836325" duration="5384000" />
+      <workItem from="1697541836325" duration="5985000" />
+      <workItem from="1698145284365" duration="253000" />
+      <workItem from="1698288448063" duration="1002000" />
+      <workItem from="1698289984723" duration="10000" />
+      <workItem from="1698290164175" duration="59000" />
+      <workItem from="1698290470144" duration="2000" />
+      <workItem from="1698290588412" duration="73000" />
+      <workItem from="1698290735129" duration="32000" />
+      <workItem from="1698290777335" duration="14000" />
+      <workItem from="1698290825206" duration="173000" />
+      <workItem from="1698291007990" duration="14000" />
+      <workItem from="1698769714789" duration="1198000" />
+      <workItem from="1699346214636" duration="1890000" />
+      <workItem from="1699363473555" duration="692000" />
+      <workItem from="1700707669959" duration="5522000" />
+      <workItem from="1701012315405" duration="8696000" />
+      <workItem from="1701915505513" duration="9225000" />
+      <workItem from="1701943547351" duration="2792000" />
     </task>
     <servers />
   </component>

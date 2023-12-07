@@ -5,6 +5,6 @@
 
 void gameSetup(gameInfoType *gameInfo, snakeType *stSnake);
 
-int movement(char **map, snakeType *stSnake);
+int movement(char **map, snakeType *stSnake, gameInfoType gameInfo);
 
 #endif //SNAKE_GAME_GAMELOGIC_H

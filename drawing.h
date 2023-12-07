@@ -5,6 +5,6 @@
 
 void drawMap(char **map, snakeType stPlayer, gameInfoType gameInfo);
 
-void drawMenu(char *filename, int iMaxX, int iHeight);
+void drawMenu();
 
 #endif

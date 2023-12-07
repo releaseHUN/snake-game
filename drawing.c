@@ -37,18 +37,18 @@ void drawMap(char **map, snakeType stPlayer, gameInfoType gameInfo) {
 		}
 	}
 
-	for (int i = 0; i < gameInfo.iScreensizeY; i++)
+	for (int i = 0; i < gameInfo.iScreensizeY; ++i)
 		fputs(screenbuffer[i], stdout);
 	putchar('\n');
 }
-//draws the menu to the screen, inputs are a filename and X, Y size of the menu
-void drawMenu(char *filename, int iMaxX, int iHeight) {
+
+void drawMenu() {
 	econio_clrscr();
-	FILE *file = fopen(filename, "r");
+	FILE *file = fopen("menu.txt", "r");
 	if (file == NULL)
 		exit(1);
 
-	for (int i = 0; i < iHeight; ++i)
-		for (int j = 0; j < iMaxX; ++j)
+	for (int i = 0; i < 40; ++i)
+		for (int j = 0; j < 102; ++j)
 			putchar(fgetc(file));
 }

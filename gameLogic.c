@@ -9,6 +9,7 @@ void gameSetup(gameInfoType *gameInfo, snakeType *stSnake) {
 	gameInfo->iScreensizeY = 40;
 	gameInfo->iPoints = 0;
 	gameInfo->iCurrentLevel = 1;
+	gameInfo->iGameState = 1;
 	econio_set_title("Snake Game");
 	econio_rawmode();
 }
@@ -72,8 +73,26 @@ static void addSegment(snakeType *stSnake) {
 	}
 }
 
+static void generateFruit(char **map, snakeType *stSnake, gameInfoType gameInfo) {
+	int iValidPlacemet = 1;
+	while (iValidPlacemet){
+		int iGenX = rand() % gameInfo.iSizeX + 1;
+		int iGenY = rand() % gameInfo.iSizeY + 1;
+		if (map[iGenY][iGenX] != '#') {
+			if (stSnake->stSegments != NULL) {
+				snakeSegment *temp = stSnake->stSegments;
+				while (temp->next != NULL) {
+					if (iGenX == temp->iX && iGenY == temp->iY)
+						break;
+				}
+				iValidPlacemet = 0;
+			}
+		}
+	}
+}
+
 //moves the snake and checks for collisions, if a collision is detected then it runs the appropriate function
-int movement(char **map, snakeType *stSnake) {
+int movement(char **map, snakeType *stSnake, gameInfoType gameInfo) {
 	getDir(stSnake);
 	stSnake->iY += stSnake->iDirY;
 	stSnake->iX += stSnake->iDirX;
@@ -86,6 +105,7 @@ int movement(char **map, snakeType *stSnake) {
 
 		case 2:
 			addSegment(stSnake);
+			generateFruit(map, stSnake, gameInfo);
 			return 2;
 
 		case 3:
