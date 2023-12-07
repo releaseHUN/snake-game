@@ -1,60 +1,54 @@
 #include "drawing.h"
-#include "snake.h"
+#include "dataTypes.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include "econio.h"
 
-static inline int clamp(int d, int min, int max) {
-	const int t = d < min ? min : d;
+//forces a given value betwen 2 values, inputs: value, min value, max value
+static inline int clamp(int val, int min, int max) {
+	const int t = val < min ? min : val;
 	return t > max ? max : t;
 }
 
-void drawMap(char **map, int iLen, snakeType stPlayer) {
-	char screenbuffer[40][102];
-	memset(screenbuffer, 0, sizeof(screenbuffer));
-	int linelen = strlen(map[0]);
+void drawMap(char **map, snakeType stPlayer, gameInfoType gameInfo) {
+	char screenbuffer[gameInfo.iScreensizeY][gameInfo.iScreensizeX];
+	//memset(screenbuffer, 0, sizeof(screenbuffer));
 	econio_clrscr();
-	for (int i = 0; i < 40; ++i) {
-		for (int j = 0; j < 101; ++j) {
-			if (20 == i && 50 == j)
-				screenbuffer[i][j] = '@';
-			else {
-				screenbuffer[i][j] = map[clamp(i + stPlayer.y - 20, 0, iLen)][clamp(j + stPlayer.x - 50, 0, linelen)];
-				for (enemy *walker = enemyList.first; walker != NULL; walker = (enemy*)walker->next) {
-					if (walker->y == i + stPlayer.y - 20 && walker->x == j + stPlayer.x - 50) {
-						screenbuffer[i][j] = walker->sprite;
-					}
-				}
-			}
-		}
-		screenbuffer[i][101] = '\0';
-		fputs(screenbuffer[i], stdout);
-#ifndef _WIN32
-		putchar('\n');
-#endif
-	}
-}
-
-void drawUI(player p) {
-	for (int i = 0; i < 101; ++i)
+	printf("Level: %d                                                                        Points: %d\n", gameInfo.iCurrentLevel, gameInfo.iPoints);
+	for (int i = 0; i < gameInfo.iScreensizeX - 1; ++i)
 		putchar('=');
-	printf("\n\n   Health: %3d / %3d   Defense: %3d / %3d   Attack: %3d / %3d", p.hp, p.defaultHP, p.defense, p.defaultDefense, p.attack, p.defaultAttack);
-	printf("\n\n   level: %3d   Xp: %3d / %3d", p.level, p.xp, p.xpToNextLevel);
-	printf("\n\n\n\n\n\n press 'q' to exit");
-}
+	putchar('\n');
 
-void drawMenu(char *filename, int len, int height) {
-	char ch;
+	for (int i = 2; i < gameInfo.iScreensizeY; ++i) {
+		for (int j = 0; j < gameInfo.iScreensizeX; ++j)
+//			screenbuffer[i][j] = map[clamp(i + stPlayer.iY - gameInfo.iScreensizeY / 2, 0, gameInfo.iSizeY)][clamp(j + stPlayer.iX - gameInfo.iScreensizeX / 2, 0, gameInfo.iSizeX)];
+			screenbuffer[i][j] = map[i][j];
+		screenbuffer[i][gameInfo.iScreensizeX] = '\n';
+	}
+
+	if (stPlayer.stSegments == NULL) {
+		screenbuffer[stPlayer.iY][stPlayer.iX] = '@';
+	} else {
+		snakeSegment *temp = stPlayer.stSegments;
+		while (temp->next != NULL) {
+			screenbuffer[temp->iY][temp->iX] = '@';
+			temp = temp->next;
+		}
+	}
+
+	for (int i = 0; i < gameInfo.iScreensizeY; i++)
+		fputs(screenbuffer[i], stdout);
+	putchar('\n');
+}
+//draws the menu to the screen, inputs are a filename and X, Y size of the menu
+void drawMenu(char *filename, int iMaxX, int iHeight) {
 	econio_clrscr();
 	FILE *file = fopen(filename, "r");
 	if (file == NULL)
 		exit(1);
 
-	for (int i = 0; i < height; ++i) {
-		for (int j = 0; j < len; ++j) {
-			ch = fgetc(file);
-			putchar(ch);
-		}
-	}
+	for (int i = 0; i < iHeight; ++i)
+		for (int j = 0; j < iMaxX; ++j)
+			putchar(fgetc(file));
 }

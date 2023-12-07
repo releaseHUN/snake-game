@@ -1,10 +1,10 @@
 #ifndef SNAKE_GAME_DRAWING_H
 #define SNAKE_GAME_DRAWING_H
 
-#include "snake.h"
+#include "dataTypes.h"
 
-void drawToScreen(char **map);
+void drawMap(char **map, snakeType stPlayer, gameInfoType gameInfo);
 
-void generateScreenbuffer(snakeType *snake, char **map);
+void drawMenu(char *filename, int iMaxX, int iHeight);
 
 #endif
