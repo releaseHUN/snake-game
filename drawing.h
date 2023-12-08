@@ -3,8 +3,8 @@
 
 #include "dataTypes.h"
 
-void drawMap(char **map, snakeType stPlayer, gameInfoType gameInfo);
+extern void drawMap(char **map, snakeType stPlayer, gameInfoType gameInfo);
 
-void drawMenu();
+extern void drawMenu();
 
 #endif

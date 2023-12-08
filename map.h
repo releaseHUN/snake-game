@@ -3,6 +3,6 @@
 
 #include "dataTypes.h"
 
-char **generateMap(char *filename, gameInfoType *gameInfo, snakeType *stPlayer);
+extern char **generateMap(char *filename, gameInfoType *gameInfo, snakeType *stPlayer);
 
 #endif //SNAKE_GAME_MAP_H

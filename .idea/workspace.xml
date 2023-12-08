@@ -21,14 +21,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d6da51d-1e81-4a65-a6e8-1371a4aa2eaf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/dataTypes.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drawing.c" beforeDir="false" afterPath="$PROJECT_DIR$/drawing.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/drawing.h" beforeDir="false" afterPath="$PROJECT_DIR$/drawing.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gameLogic.c" beforeDir="false" afterPath="$PROJECT_DIR$/gameLogic.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gameLogic.h" beforeDir="false" afterPath="$PROJECT_DIR$/gameLogic.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.h" beforeDir="false" afterPath="$PROJECT_DIR$/map.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +111,8 @@
       <workItem from="1700707669959" duration="5522000" />
       <workItem from="1701012315405" duration="8696000" />
       <workItem from="1701915505513" duration="9225000" />
-      <workItem from="1701943547351" duration="2792000" />
+      <workItem from="1701943547351" duration="3367000" />
+      <workItem from="1702066157001" duration="4311000" />
     </task>
     <servers />
   </component>

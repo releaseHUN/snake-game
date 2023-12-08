@@ -3,10 +3,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char **generateMap(char *filename, gameInfoType *gameInfo, snakeType *stPlayer) {
+//generates the map from a given file, opens the file, parses the information needed from the first 5 lines of the file
+//then it allocates memory for the map matrix and loads the map into it, returns with the map matrix
+extern char **generateMap(char *filename, gameInfoType *gameInfo, snakeType *stPlayer) {
 	FILE *file = fopen(filename, "r");
-	if (file == NULL)
+	if (file == NULL) {
+		printf("the map file doesn't exist");
 		exit(1);
+	}
 
 	int currLine = 0;
 	char tempLine[8];

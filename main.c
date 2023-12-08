@@ -4,21 +4,24 @@
 #include "map.h"
 #include "econio.h"
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 int main(void) {
 	drawMenu();
-	char menuInput = getchar();
+	gameInfoType gameInfo;
+	snakeType stSnake;
+	gameSetup(&gameInfo, &stSnake);
+	char menuInput = (char)getchar();
 	if (menuInput == '1') {
-		gameInfoType gameInfo;
-		snakeType stSnake;
-		gameSetup(&gameInfo, &stSnake);
-		char filename[] = "maps/map1.txt";
+		char filename[17];
+		strcpy(filename, generateMapname(gameInfo, filename));
 		char **map = generateMap(filename, &gameInfo, &stSnake);
+		//generateFruit(map, &stSnake, gameInfo);
 		while (gameInfo.iGameState == 1) {
-			movement(map, &stSnake, gameInfo);
+			movement(map, &stSnake, &gameInfo);
 			drawMap(map, stSnake, gameInfo);
-			econio_sleep(1);
+			econio_sleep(.5);
 		}
 		if (gameInfo.iGameState == 0)
 			return 0;
@@ -26,7 +29,7 @@ int main(void) {
 			return 0;
 		}
 	} else if (menuInput == '2')
-		exit(0);
+		return 0;
 
 	return 0;
 }

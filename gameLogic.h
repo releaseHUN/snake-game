@@ -3,8 +3,12 @@
 
 #include "dataTypes.h"
 
-void gameSetup(gameInfoType *gameInfo, snakeType *stSnake);
+extern void gameSetup(gameInfoType *gameInfo, snakeType *stSnake);
 
-int movement(char **map, snakeType *stSnake, gameInfoType gameInfo);
+void generateFruit(char **map, snakeType *stSnake, gameInfoType gameInfo);
+
+extern char *generateMapname(gameInfoType gameInfo, char *output);
+
+extern int movement(char **map, snakeType *stSnake, gameInfoType *gameInfo);
 
 #endif //SNAKE_GAME_GAMELOGIC_H

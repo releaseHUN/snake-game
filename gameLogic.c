@@ -2,16 +2,30 @@
 #include "econio.h"
 #include "dataTypes.h"
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
 
 //sets up the basic variables for the game to work
-void gameSetup(gameInfoType *gameInfo, snakeType *stSnake) {
-	gameInfo->iScreensizeX = 102;
+extern void gameSetup(gameInfoType *gameInfo, snakeType *stSnake) {
+	gameInfo->iScreensizeX = 103;
 	gameInfo->iScreensizeY = 40;
 	gameInfo->iPoints = 0;
 	gameInfo->iCurrentLevel = 1;
 	gameInfo->iGameState = 1;
 	econio_set_title("Snake Game");
 	econio_rawmode();
+}
+
+//generates the filepath to the current level, returns the path
+extern char *generateMapname(gameInfoType gameInfo, char *output) {
+	char temp[3];
+	strcpy(output, "maps/");
+	strcat(output, "map");
+	sprintf(temp, "%d", gameInfo.iCurrentLevel);
+	strcat(output, temp);
+	strcat(output, ".txt\0");
+	return output;
 }
 
 //checks for input and updates the movement direction of the snake
@@ -42,6 +56,7 @@ static void getDir(snakeType *stSnake) {
 }
 
 //checks for collisions and returns with a non-zero identifier if a collision is found
+//0 if no collision is found, 1 if the snake hits a wall or itself, 2 if the snake hits a fruit
 static int collisionCheck(char **map, snakeType *stSnake) {
 	if(stSnake->stSegments != NULL) {
 		snakeSegment *temp = stSnake->stSegments;
@@ -73,7 +88,8 @@ static void addSegment(snakeType *stSnake) {
 	}
 }
 
-static void generateFruit(char **map, snakeType *stSnake, gameInfoType gameInfo) {
+//generates a new fruit randomly on the map
+void generateFruit(char **map, snakeType *stSnake, gameInfoType gameInfo) {
 	int iValidPlacemet = 1;
 	while (iValidPlacemet){
 		int iGenX = rand() % gameInfo.iSizeX + 1;
@@ -91,8 +107,30 @@ static void generateFruit(char **map, snakeType *stSnake, gameInfoType gameInfo)
 	}
 }
 
+//frees the map from memory
+static void freeMap(char **map, gameInfoType gameInfo) {
+	for (int i = 0; i < gameInfo.iSizeY; i++)
+		free(map[i]);
+	free(map);
+}
+
+//frees the snake segments from memory
+static void freeList (snakeType stSnake) {
+	if (stSnake.stSegments == NULL)
+		return;
+	snakeSegment *head = stSnake.stSegments;
+	snakeSegment *tmp;
+	while (head != NULL) {
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+}
+
 //moves the snake and checks for collisions, if a collision is detected then it runs the appropriate function
-int movement(char **map, snakeType *stSnake, gameInfoType gameInfo) {
+//returns with an identifier about what happened
+//0 if the snake just moved, 1 if it's game over, 2 if a new segment was added to the snake, 3 if the snake moved into a portal
+extern int movement(char **map, snakeType *stSnake, gameInfoType *gameInfo) {
 	getDir(stSnake);
 	stSnake->iY += stSnake->iDirY;
 	stSnake->iX += stSnake->iDirX;
@@ -105,7 +143,8 @@ int movement(char **map, snakeType *stSnake, gameInfoType gameInfo) {
 
 		case 2:
 			addSegment(stSnake);
-			generateFruit(map, stSnake, gameInfo);
+			gameInfo->iPoints += 10;
+			//generateFruit(map, stSnake, *gameInfo);
 			return 2;
 
 		case 3:
