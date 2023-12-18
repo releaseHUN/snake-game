@@ -66,7 +66,7 @@ static int collisionCheck(char **map, snakeType *stSnake) {
 			temp = temp->next;
 		}
 	}
-	if (map[stSnake->iY][stSnake->iX] == '@')
+	if (map[stSnake->iY][stSnake->iX] == '#')
 		return 1;
 	else if (map[stSnake->iY][stSnake->iX] == 'O')
 		return 2;
@@ -92,30 +92,33 @@ static void addSegment(snakeType *stSnake) {
 void generateFruit(char **map, snakeType *stSnake, gameInfoType gameInfo) {
 	int iValidPlacemet = 1;
 	while (iValidPlacemet){
-		int iGenX = rand() % gameInfo.iSizeX + 1;
-		int iGenY = rand() % gameInfo.iSizeY + 1;
+		int iGenX = rand() % gameInfo.iSizeX;
+		int iGenY = rand() % gameInfo.iSizeY;
 		if (map[iGenY][iGenX] != '#') {
 			if (stSnake->stSegments != NULL) {
 				snakeSegment *temp = stSnake->stSegments;
-				while (temp->next != NULL) {
-					if (iGenX == temp->iX && iGenY == temp->iY)
+				while (temp != NULL) {
+					if (iGenX == temp->iX && iGenY == temp->iY) {
 						break;
+					}
+					temp = temp->next;
 				}
 				iValidPlacemet = 0;
 			}
 		}
+		map[iGenY][iGenX] = 'O';
 	}
 }
 
 //frees the map from memory
-static void freeMap(char **map, gameInfoType gameInfo) {
+extern void freeMap(char **map, gameInfoType gameInfo) {
 	for (int i = 0; i < gameInfo.iSizeY; i++)
 		free(map[i]);
 	free(map);
 }
 
 //frees the snake segments from memory
-static void freeList (snakeType stSnake) {
+extern void freeList (snakeType stSnake) {
 	if (stSnake.stSegments == NULL)
 		return;
 	snakeSegment *head = stSnake.stSegments;
@@ -139,11 +142,17 @@ extern int movement(char **map, snakeType *stSnake, gameInfoType *gameInfo) {
 			return 0;
 
 		case 1:
+			freeList(*stSnake);
+			freeMap(map, *gameInfo);
+			econio_clrscr();
+			printf("Game Over!\nAchieved Points: %d",gameInfo->iPoints);
+			exit(0);
 			return 1;
 
 		case 2:
 			addSegment(stSnake);
 			gameInfo->iPoints += 10;
+			map[stSnake->iY][stSnake->iX] = '.';
 			//generateFruit(map, stSnake, *gameInfo);
 			return 2;
 

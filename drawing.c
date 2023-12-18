@@ -33,10 +33,11 @@ extern void drawMap(char **map, snakeType stPlayer, gameInfoType gameInfo) {
 	if (stPlayer.stSegments == NULL) {
 		screenbuffer[stPlayer.iY][stPlayer.iX] = '@';
 	} else {
+		screenbuffer[stPlayer.iY][stPlayer.iX] = '@';
 		snakeSegment *temp = stPlayer.stSegments;
 		while (temp->next != NULL) {
-			screenbuffer[temp->iY][temp->iX] = '@';
 			temp = temp->next;
+			screenbuffer[temp->iY][temp->iX] = '@';
 		}
 	}
 

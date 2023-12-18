@@ -8,11 +8,12 @@
 #include <stdlib.h>
 
 int main(void) {
-	drawMenu();
+	//drawMenu();
 	gameInfoType gameInfo;
 	snakeType stSnake;
 	gameSetup(&gameInfo, &stSnake);
 	char menuInput = (char)getchar();
+	START:
 	if (menuInput == '1') {
 		char filename[17];
 		strcpy(filename, generateMapname(gameInfo, filename));
@@ -23,10 +24,11 @@ int main(void) {
 			drawMap(map, stSnake, gameInfo);
 			econio_sleep(.5);
 		}
-		if (gameInfo.iGameState == 0)
-			return 0;
-		else if (gameInfo.iGameState == 2) {
-			return 0;
+		if (gameInfo.iGameState == 0) {
+			freeList(stSnake);
+			freeMap(map, gameInfo);
+			gameInfo.iCurrentLevel++;
+			goto START;
 		}
 	} else if (menuInput == '2')
 		return 0;

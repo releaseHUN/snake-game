@@ -5,9 +5,13 @@
 
 extern void gameSetup(gameInfoType *gameInfo, snakeType *stSnake);
 
-void generateFruit(char **map, snakeType *stSnake, gameInfoType gameInfo);
+extern void generateFruit(char **map, snakeType *stSnake, gameInfoType gameInfo);
 
 extern char *generateMapname(gameInfoType gameInfo, char *output);
+
+extern void freeList (snakeType stSnake);
+
+extern void freeMap(char **map, gameInfoType gameInfo);
 
 extern int movement(char **map, snakeType *stSnake, gameInfoType *gameInfo);
 
